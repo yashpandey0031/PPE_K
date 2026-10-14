@@ -1,0 +1,68 @@
+{
+  "summary": {
+    "activeViolations": 18,
+    "resolvedToday": 42,
+    "monitoredWorkers": 126,
+    "modelConfidence": "92%"
+  },
+  "zones": ["Entry gate", "Scaffold A", "Loading bay", "North trench"],
+  "violationMix": [
+    { "label": "No helmet", "count": 8 },
+    { "label": "No vest", "count": 13 },
+    { "label": "No goggles", "count": 4 },
+    { "label": "No gloves", "count": 6 },
+    { "label": "No mask", "count": 3 }
+  ],
+  "violations": [
+    {
+      "time": "11:48 PM",
+      "worker": "W-104",
+      "item": "No vest",
+      "zone": "Entry gate",
+      "severity": "High",
+      "status": "Open",
+      "confidence": 0.94,
+      "camera": "CAM-02"
+    },
+    {
+      "time": "11:41 PM",
+      "worker": "W-087",
+      "item": "No helmet",
+      "zone": "Scaffold A",
+      "severity": "High",
+      "status": "Open",
+      "confidence": 0.91,
+      "camera": "CAM-04"
+    },
+    {
+      "time": "11:30 PM",
+      "worker": "W-211",
+      "item": "No goggles",
+      "zone": "Loading bay",
+      "severity": "Medium",
+      "status": "Review",
+      "confidence": 0.87,
+      "camera": "CAM-01"
+    },
+    {
+      "time": "11:12 PM",
+      "worker": "W-044",
+      "item": "No gloves",
+      "zone": "North trench",
+      "severity": "Medium",
+      "status": "Resolved",
+      "confidence": 0.89,
+      "camera": "CAM-07"
+    },
+    {
+      "time": "10:58 PM",
+      "worker": "W-119",
+      "item": "No mask",
+      "zone": "Scaffold A",
+      "severity": "Low",
+      "status": "Resolved",
+      "confidence": 0.83,
+      "camera": "CAM-04"
+    }
+  ]
+}

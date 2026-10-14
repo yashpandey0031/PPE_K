@@ -1,0 +1,222 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Anzen | PPE Kit Detection</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="site-header" id="top">
+      <a class="brand" href="#top" aria-label="Anzen home">
+        <span class="brand-mark">A</span>
+        <span>Anzen</span>
+      </a>
+      <nav class="main-nav" aria-label="Primary navigation">
+        <a href="#why">Why</a>
+        <a href="#workflow">How it works</a>
+        <a href="#stack">Stack</a>
+        <button class="nav-login" type="button" data-open-login>Demo login</button>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero" aria-labelledby="hero-title">
+        <img class="hero-image" src="assets/anzen-hero.png" alt="Construction site entrance monitored by an AI safety camera" />
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+          <p class="eyebrow">AI safety monitoring for construction teams</p>
+          <h1 id="hero-title">Anzen detects PPE violations before risk turns into injury.</h1>
+          <p class="hero-copy">
+            A YOLO-powered PPE kit detection system that monitors helmet, vest, glove, goggle, and mask compliance from site cameras, then turns every violation into clear dashboard action.
+          </p>
+          <div class="hero-actions">
+            <button class="primary-btn" type="button" data-open-login>Open dashboard</button>
+            <a class="secondary-btn" href="#dashboard-preview">View demo metrics</a>
+          </div>
+        </div>
+      </section>
+
+      <section class="section intro" id="why">
+        <div>
+          <p class="section-kicker">Why Anzen</p>
+          <h2>Manual PPE checks do not scale with busy sites.</h2>
+        </div>
+        <div class="intro-grid">
+          <article>
+            <strong>Detect missing PPE</strong>
+            <p>Identify missing helmets, vests, goggles, masks, and gloves from camera frames using model predictions.</p>
+          </article>
+          <article>
+            <strong>Track who needs attention</strong>
+            <p>Use temporary worker IDs until permanent identification is added, keeping the workflow useful during development.</p>
+          </article>
+          <article>
+            <strong>Act quickly</strong>
+            <p>Show severity, location, camera, confidence, and history so supervisors can respond without digging through footage.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="section workflow" id="workflow">
+        <div class="section-heading">
+          <p class="section-kicker">How it works</p>
+          <h2>From camera frame to safety record.</h2>
+        </div>
+        <div class="steps">
+          <article>
+            <span>01</span>
+            <h3>Capture</h3>
+            <p>Site cameras or uploaded clips send frames to the backend detection service.</p>
+          </article>
+          <article>
+            <span>02</span>
+            <h3>Detect</h3>
+            <p>YOLO runs PPE class detection from Roboflow-trained datasets and returns labels, boxes, and confidence.</p>
+          </article>
+          <article>
+            <span>03</span>
+            <h3>Identify</h3>
+            <p>Temporary worker IDs group repeated detections until face, badge, or tracker-based identity is ready.</p>
+          </article>
+          <article>
+            <span>04</span>
+            <h3>Respond</h3>
+            <p>The dashboard creates violation records, severity levels, alerts, and searchable history.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="section stack" id="stack">
+        <div>
+          <p class="section-kicker">Project architecture</p>
+          <h2>Built to plug into your model pipeline.</h2>
+        </div>
+        <div class="stack-list">
+          <span>YOLOv8</span>
+          <span>Roboflow datasets</span>
+          <span>FastAPI</span>
+          <span>OpenCV</span>
+          <span>REST API</span>
+          <span>WebSocket alerts</span>
+          <span>Supabase/PostgreSQL</span>
+          <span>Twilio alerts</span>
+        </div>
+      </section>
+
+      <section class="dashboard-shell" id="dashboard-preview" aria-label="Anzen dashboard demo">
+        <aside class="sidebar">
+          <a class="brand compact" href="#top">
+            <span class="brand-mark">A</span>
+            <span>Anzen</span>
+          </a>
+          <nav aria-label="Dashboard navigation">
+            <button class="side-link active" type="button" data-view="overview">Overview</button>
+            <button class="side-link" type="button" data-view="violations">Violations</button>
+            <button class="side-link" type="button" data-view="workers">Worker IDs</button>
+            <button class="side-link" type="button" data-view="history">History</button>
+          </nav>
+          <div class="system-card">
+            <span class="live-dot"></span>
+            <div>
+              <strong>Demo feed active</strong>
+              <p>Mock API mode</p>
+            </div>
+          </div>
+        </aside>
+
+        <section class="dashboard-main">
+          <div class="dashboard-topbar">
+            <div>
+              <p class="section-kicker">Supervisor console</p>
+              <h2>Safety operations dashboard</h2>
+            </div>
+            <div class="topbar-actions">
+              <select id="zoneFilter" aria-label="Filter by zone">
+                <option value="all">All zones</option>
+              </select>
+              <button class="primary-btn small" type="button" data-refresh>Refresh</button>
+            </div>
+          </div>
+
+          <div class="metric-grid" id="metrics"></div>
+
+          <div class="dashboard-grid" data-panel="overview">
+            <article class="panel camera-panel">
+              <div class="panel-head">
+                <div>
+                  <p class="section-kicker">Live analysis</p>
+                  <h3>Camera 02 - Entry gate</h3>
+                </div>
+                <span class="status-pill critical">Violation</span>
+              </div>
+              <div class="feed">
+                <img src="assets/anzen-hero.png" alt="Demo detection camera frame" />
+                <div class="detection-box vest"></div>
+                <div class="detection-label">No vest - W-104</div>
+              </div>
+            </article>
+
+            <article class="panel">
+              <div class="panel-head">
+                <div>
+                  <p class="section-kicker">Violation mix</p>
+                  <h3>Today by PPE type</h3>
+                </div>
+              </div>
+              <div class="chart" id="violationChart"></div>
+            </article>
+          </div>
+
+          <article class="panel table-panel">
+            <div class="panel-head">
+              <div>
+                <p class="section-kicker">Action queue</p>
+                <h3 id="tableTitle">Recent PPE violations</h3>
+              </div>
+              <input id="searchInput" type="search" placeholder="Search worker, PPE, zone" aria-label="Search violations" />
+            </div>
+            <div class="table-wrap">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Time</th>
+                    <th>Worker</th>
+                    <th>Violation</th>
+                    <th>Zone</th>
+                    <th>Severity</th>
+                    <th>Status</th>
+                  </tr>
+                </thead>
+                <tbody id="violationRows"></tbody>
+              </table>
+            </div>
+          </article>
+        </section>
+      </section>
+    </main>
+
+    <dialog class="login-modal" id="loginDialog">
+      <form method="dialog" class="login-card">
+        <button class="close-btn" value="close" aria-label="Close login">x</button>
+        <span class="brand-mark">A</span>
+        <h2>Open Anzen demo</h2>
+        <p>Use quick login to enter the supervisor dashboard with sample PPE violation data.</p>
+        <label>
+          Email
+          <input type="email" value="supervisor@anzen.demo" />
+        </label>
+        <label>
+          Password
+          <input type="password" value="anzen-demo" />
+        </label>
+        <button class="primary-btn" type="button" id="quickLogin">Quick login</button>
+      </form>
+    </dialog>
+
+    <script src="app.js"></script>
+  </body>
+</html>
