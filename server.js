@@ -70,7 +70,8 @@ function handleApi(request, response) {
 const server = http.createServer((request, response) => {
   if (handleApi(request, response)) return;
 
-  const requestPath = request.url === "/" ? "/index.html" : decodeURIComponent(request.url.split("?")[0]);
+  const cleanUrl = decodeURIComponent(request.url.split("?")[0]);
+  const requestPath = request.url === "/" ? "/index.html" : cleanUrl === "/dashboard" ? "/dashboard.html" : cleanUrl;
   const filePath = path.normalize(path.join(root, requestPath));
 
   if (!filePath.startsWith(root)) {

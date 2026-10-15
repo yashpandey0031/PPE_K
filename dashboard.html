@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Anzen Dashboard | PPE Kit Detection</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body class="dashboard-page">
+    <section class="dashboard-shell app-shell" aria-label="Anzen dashboard">
+      <aside class="sidebar">
+        <a class="brand compact" href="index.html">
+          <span class="brand-mark">A</span>
+          <span>Anzen</span>
+        </a>
+        <nav aria-label="Dashboard navigation">
+          <button class="side-link active" type="button" data-view="overview">Overview</button>
+          <button class="side-link" type="button" data-view="violations">Violations</button>
+          <button class="side-link" type="button" data-view="workers">Worker IDs</button>
+          <button class="side-link" type="button" data-view="history">History</button>
+        </nav>
+        <div class="system-card">
+          <span class="live-dot"></span>
+          <div>
+            <strong>Demo feed active</strong>
+            <p>Mock API mode</p>
+          </div>
+        </div>
+      </aside>
+
+      <main class="dashboard-main">
+        <div class="dashboard-topbar">
+          <div>
+            <p class="section-kicker" id="viewKicker">Supervisor console</p>
+            <h1 id="viewTitle">Safety operations dashboard</h1>
+            <p class="view-summary" id="viewSummary">Live PPE compliance overview for site supervisors.</p>
+          </div>
+          <div class="topbar-actions">
+            <select id="zoneFilter" aria-label="Filter by zone">
+              <option value="all">All zones</option>
+            </select>
+            <button class="primary-btn small" type="button" data-refresh>Refresh</button>
+          </div>
+        </div>
+
+        <div class="metric-grid" id="metrics"></div>
+
+        <section class="dashboard-grid" id="overviewPanels" aria-label="Overview panels">
+          <article class="panel camera-panel">
+            <div class="panel-head">
+              <div>
+                <p class="section-kicker">Live analysis</p>
+                <h2 id="cameraTitle">Camera 02 - Entry gate</h2>
+              </div>
+              <span class="status-pill critical" id="cameraStatus">Violation</span>
+            </div>
+            <div class="feed">
+              <img src="assets/anzen-hero.png" alt="Demo detection camera frame" />
+              <div class="detection-box vest"></div>
+              <div class="detection-label" id="detectionLabel">No vest - W-104</div>
+            </div>
+          </article>
+
+          <article class="panel">
+            <div class="panel-head">
+              <div>
+                <p class="section-kicker">Violation mix</p>
+                <h2>Today by PPE type</h2>
+              </div>
+            </div>
+            <div class="chart" id="violationChart"></div>
+          </article>
+        </section>
+
+        <section class="worker-grid" id="workerPanels" hidden aria-label="Worker identification">
+          <article class="panel worker-card">
+            <p class="section-kicker">Most flagged ID</p>
+            <h2 id="mostFlaggedId">W-104</h2>
+            <p id="mostFlaggedCopy">Temporary identity grouped across Entry gate detections.</p>
+          </article>
+          <article class="panel worker-card">
+            <p class="section-kicker">Repeat risk</p>
+            <h2 id="repeatRiskCount">4 workers</h2>
+            <p id="repeatRiskCopy">Workers with two or more PPE events in the current shift.</p>
+          </article>
+          <article class="panel worker-card">
+            <p class="section-kicker">Identity mode</p>
+            <h2>Temporary IDs</h2>
+            <p>Ready to replace later with badge, face, or tracker based identification.</p>
+          </article>
+        </section>
+
+        <article class="panel table-panel">
+          <div class="panel-head">
+            <div>
+              <p class="section-kicker" id="tableKicker">Action queue</p>
+              <h2 id="tableTitle">Recent PPE violations</h2>
+            </div>
+            <input id="searchInput" type="search" placeholder="Search worker, PPE, zone" aria-label="Search violations" />
+          </div>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>Time</th>
+                  <th>Worker</th>
+                  <th>Violation</th>
+                  <th>Zone</th>
+                  <th>Severity</th>
+                  <th>Status</th>
+                </tr>
+              </thead>
+              <tbody id="violationRows"></tbody>
+            </table>
+          </div>
+        </article>
+      </main>
+    </section>
+
+    <script src="app.js"></script>
+  </body>
+</html>

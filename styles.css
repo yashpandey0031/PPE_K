@@ -26,6 +26,7 @@ body {
   font-family: Inter, Arial, sans-serif;
   color: var(--ink);
   background: var(--bg);
+  overflow-x: hidden;
 }
 
 button,
@@ -299,6 +300,14 @@ h1 {
   border-top: 1px solid var(--line);
 }
 
+.dashboard-page {
+  background: #edf2ef;
+}
+
+.app-shell {
+  border-top: 0;
+}
+
 .sidebar {
   padding: 28px 18px;
   background: #ffffff;
@@ -348,6 +357,20 @@ h1 {
 
 .dashboard-main {
   padding: 30px;
+  min-width: 0;
+}
+
+.dashboard-topbar h1 {
+  margin-bottom: 8px;
+  font-size: clamp(2rem, 3vw, 3.3rem);
+  line-height: 1.04;
+}
+
+.view-summary {
+  max-width: 680px;
+  margin-bottom: 0;
+  color: var(--muted);
+  line-height: 1.5;
 }
 
 .dashboard-topbar,
@@ -401,8 +424,27 @@ input {
   margin-bottom: 18px;
 }
 
+.worker-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+  margin-bottom: 18px;
+}
+
+.worker-grid[hidden],
+.dashboard-grid[hidden] {
+  display: none;
+}
+
+.worker-card p:last-child {
+  margin-bottom: 0;
+  color: var(--muted);
+  line-height: 1.6;
+}
+
 .panel {
   padding: 20px;
+  min-width: 0;
   box-shadow: var(--shadow);
 }
 
@@ -480,6 +522,11 @@ input {
   margin-top: 20px;
 }
 
+.empty-state {
+  margin-bottom: 0;
+  color: var(--muted);
+}
+
 .bar-row {
   display: grid;
   grid-template-columns: 92px 1fr 34px;
@@ -503,6 +550,7 @@ input {
 }
 
 .table-panel {
+  overflow: hidden;
   box-shadow: var(--shadow);
 }
 
@@ -610,7 +658,8 @@ td {
   .steps,
   .stack-list,
   .metric-grid,
-  .dashboard-grid {
+  .dashboard-grid,
+  .worker-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
@@ -651,6 +700,7 @@ td {
   .stack-list,
   .metric-grid,
   .dashboard-grid,
+  .worker-grid,
   .sidebar nav {
     grid-template-columns: 1fr;
   }

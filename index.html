@@ -35,7 +35,7 @@
           </p>
           <div class="hero-actions">
             <button class="primary-btn" type="button" data-open-login>Open dashboard</button>
-            <a class="secondary-btn" href="#dashboard-preview">View demo metrics</a>
+            <button class="secondary-btn" type="button" data-open-login>View demo dashboard</button>
           </div>
         </div>
       </section>
@@ -105,97 +105,6 @@
           <span>Supabase/PostgreSQL</span>
           <span>Twilio alerts</span>
         </div>
-      </section>
-
-      <section class="dashboard-shell" id="dashboard-preview" aria-label="Anzen dashboard demo">
-        <aside class="sidebar">
-          <a class="brand compact" href="#top">
-            <span class="brand-mark">A</span>
-            <span>Anzen</span>
-          </a>
-          <nav aria-label="Dashboard navigation">
-            <button class="side-link active" type="button" data-view="overview">Overview</button>
-            <button class="side-link" type="button" data-view="violations">Violations</button>
-            <button class="side-link" type="button" data-view="workers">Worker IDs</button>
-            <button class="side-link" type="button" data-view="history">History</button>
-          </nav>
-          <div class="system-card">
-            <span class="live-dot"></span>
-            <div>
-              <strong>Demo feed active</strong>
-              <p>Mock API mode</p>
-            </div>
-          </div>
-        </aside>
-
-        <section class="dashboard-main">
-          <div class="dashboard-topbar">
-            <div>
-              <p class="section-kicker">Supervisor console</p>
-              <h2>Safety operations dashboard</h2>
-            </div>
-            <div class="topbar-actions">
-              <select id="zoneFilter" aria-label="Filter by zone">
-                <option value="all">All zones</option>
-              </select>
-              <button class="primary-btn small" type="button" data-refresh>Refresh</button>
-            </div>
-          </div>
-
-          <div class="metric-grid" id="metrics"></div>
-
-          <div class="dashboard-grid" data-panel="overview">
-            <article class="panel camera-panel">
-              <div class="panel-head">
-                <div>
-                  <p class="section-kicker">Live analysis</p>
-                  <h3>Camera 02 - Entry gate</h3>
-                </div>
-                <span class="status-pill critical">Violation</span>
-              </div>
-              <div class="feed">
-                <img src="assets/anzen-hero.png" alt="Demo detection camera frame" />
-                <div class="detection-box vest"></div>
-                <div class="detection-label">No vest - W-104</div>
-              </div>
-            </article>
-
-            <article class="panel">
-              <div class="panel-head">
-                <div>
-                  <p class="section-kicker">Violation mix</p>
-                  <h3>Today by PPE type</h3>
-                </div>
-              </div>
-              <div class="chart" id="violationChart"></div>
-            </article>
-          </div>
-
-          <article class="panel table-panel">
-            <div class="panel-head">
-              <div>
-                <p class="section-kicker">Action queue</p>
-                <h3 id="tableTitle">Recent PPE violations</h3>
-              </div>
-              <input id="searchInput" type="search" placeholder="Search worker, PPE, zone" aria-label="Search violations" />
-            </div>
-            <div class="table-wrap">
-              <table>
-                <thead>
-                  <tr>
-                    <th>Time</th>
-                    <th>Worker</th>
-                    <th>Violation</th>
-                    <th>Zone</th>
-                    <th>Severity</th>
-                    <th>Status</th>
-                  </tr>
-                </thead>
-                <tbody id="violationRows"></tbody>
-              </table>
-            </div>
-          </article>
-        </section>
       </section>
     </main>
 
