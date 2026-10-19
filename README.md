@@ -2,8 +2,7 @@
 
 Anzen is a demo frontend and dashboard for a PPE kit detection system. It is designed to connect later to a YOLO/Roboflow model backend while staying usable today with mock data.
 
-## What is included
-
+## What is included 
 - Landing page explaining the project, why it matters, and how the detection flow works.
 - Demo login modal with a quick login button that opens the separate dashboard page.
 - Dashboard page with PPE violation metrics, temporary worker identification, zone filters, search, history, and violation severity/status.
